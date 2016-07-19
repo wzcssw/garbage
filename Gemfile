@@ -34,7 +34,14 @@ gem 'grape-entity'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'puma'
+gem 'capistrano', '~> 3.2.1'
+gem 'capistrano-rails'
+gem 'capistrano-rvm'
+gem 'capistrano-bundler'
+gem 'capistrano-sidekiq'
+gem 'capistrano3-puma'
+gem 'capistrano-slackify', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
