@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
-  database: garbage_production
-  username: garbage
-  password: <%= ENV['GARBAGE_DATABASE_PASSWORD'] %>
+  database: just_test_production
+  username: root
+  password: wzc19931030
+  socket: /var/lib/mysql/mysql.sock
