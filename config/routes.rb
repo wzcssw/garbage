@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  get 'welcome/wechat_test'
-  post 'welcome/wechat_text'
+  # get 'welcome/wechat_test'
+  get 'welcome/wechat_test', to: 'welcome#wechat_test'
+  post 'welcome/wechat_test', to: 'welcome#wechat_text'
 
   mount API::Base => '/api'
   # Example of regular route:
