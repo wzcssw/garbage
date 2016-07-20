@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  get 'welcome/wechat_test'
 
   mount API::Base => '/api'
   # Example of regular route:
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
   # Example resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
-  #     resource :seller
+  #     resource :sellerx
   #   end
 
   # Example resource route with more complex sub-resources:
