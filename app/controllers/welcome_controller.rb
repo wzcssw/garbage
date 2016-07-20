@@ -24,7 +24,9 @@ class WelcomeController < ApplicationController
   # 文本消息
   def wechat_text
     puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start"
+    RAILS_DEFAULT_LOGGER.info("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<") 
     puts params
+    puts params[:xml]
     puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end  "
     render text: 'success'
   end

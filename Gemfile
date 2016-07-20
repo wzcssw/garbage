@@ -44,7 +44,7 @@ gem 'capistrano3-puma'
 gem 'capistrano-slackify', require: false
 
 #xml parse
-gem 'actionpack-xml_parser'
+# gem 'actionpack-xml_parser'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
