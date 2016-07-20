@@ -25,8 +25,8 @@ class WelcomeController < ApplicationController
     puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start"
     puts params
     puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end  "
-    
-    render text: '你好呀'
+
+    render text: 'success'
   end
 
 end
