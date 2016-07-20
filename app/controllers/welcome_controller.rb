@@ -20,4 +20,11 @@ class WelcomeController < ApplicationController
     end
   end
 
+  # 文本消息
+  def wechat_text
+    puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< start"
+    puts params
+    puts "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end  "
+  end
+
 end
