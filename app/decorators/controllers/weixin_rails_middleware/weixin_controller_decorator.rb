@@ -12,8 +12,14 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       Rails.logger.info("<<<<<<<<<< 用户发来消息: #{@keyword} >>>>>>>>>")
+
       Rails.logger.info(@weixin_message.inspect)
-      Rails.logger.info(params)
+      Rails.logger.info(@weixin_message.ToUserName)
+      Rails.logger.info(@weixin_message.FromUserName)
+      Rails.logger.info(@weixin_message.MsgType)
+      Rails.logger.info(@weixin_message.ToUserName)
+      Rails.logger.info(@weixin_message.Content)
+      Rails.logger.info(params['openid'])
       #######
       text = @keyword
       url = "http://sandbox.api.simsimi.com"
