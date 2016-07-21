@@ -88,7 +88,12 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
         return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
       end
-      reply_text_message("关注公众账号")
+      str_1 = "1. 我们专注于服务质量,只面向高端用户.\n"
+      str_2 = "2. 收集破烂是为了绿色环保,生活环境才是我们永恒的财富.\n"
+      str_3 = "3. 捡破烂是一种生活态度.\n"
+      str_3 = "4. 我们接受任何形式的捐款,投资.\n"
+
+      reply_text_message("能关注此公众是你的荣幸，因为:\n\n #{str_1}#{str_2}#{str_3}")
     end
 
     # 取消关注
