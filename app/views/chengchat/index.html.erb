@@ -1,0 +1,22 @@
+<table border="1">
+  <tr>
+    <th>openid</th>
+    <th>content</th>
+    <th>reply</th>
+    <th>from_user_name</th>
+    <th>to_user_name</th>
+    <th>msg_type</th>
+    <th>created_at</th>
+  </tr>
+  <% @chengchats.each do |cc| %>
+    <tr>
+      <th><%= cc.openid %></th>
+      <th><%= cc.content %></th>
+      <th><%= cc.reply %></th>
+      <th><%= cc.from_user_name %></th>
+      <th><%= cc.to_user_name %></th>
+      <th><%= cc.msg_type %></th>
+      <th><%= cc.created_at %></th>
+    </tr>
+  <% end %>
+</table>
