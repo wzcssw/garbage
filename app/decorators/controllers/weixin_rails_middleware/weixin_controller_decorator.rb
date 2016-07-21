@@ -5,15 +5,28 @@
 WeixinRailsMiddleware::WeixinController.class_eval do
 
   def reply
-    Rails.logger.info("### reply ###")
+    Rails.logger.info("### 回复信息 ###")
     render xml: send("response_#{@weixin_message.MsgType}_message", {})
   end
 
   private
 
     def response_text_message(options={})
-      Rails.logger.info("### reply_text_message ###")
-      reply_text_message("Your Message: #{@keyword}")
+      Rails.logger.info("### 用户发来消息:#{@keyword} ###")
+      #######
+      text = @keyword
+      url = "http://sandbox.api.simsimi.com"
+      key = "506f316e-ea1e-41cd-bfcd-f434f83345b2"
+      path = "/request.p?key=#{key}&lc=zh&text=#{text}"
+      str = get_page(url,path)
+      obj = JSON.parse(str) if str.present?
+      if obj['msg']=='ok'
+        result = obj['response']
+      else
+        result = 'Zzzzzz.....'
+      end
+      #######
+      reply_text_message(result)
     end
 
     # <Location_X>23.134521</Location_X>
@@ -91,9 +104,9 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       str_1 = "1. 我们专注于服务质量,只面向高端用户.\n"
       str_2 = "2. 收集破烂是为了绿色环保,生活环境才是我们永恒的财富.\n"
       str_3 = "3. 捡破烂是一种生活态度.\n"
-      str_3 = "4. 我们接受任何形式的捐款,投资.\n"
+      str_4 = "4. 我们接受任何形式的捐款,投资.\n"
 
-      reply_text_message("能关注此公众是你的荣幸，因为:\n\n #{str_1}#{str_2}#{str_3}")
+      reply_text_message("能关注此公众是你的荣幸，因为:\n\n #{str_1}#{str_2}#{str_3}#{str_4}")
     end
 
     # 取消关注
@@ -276,4 +289,15 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       Rails.logger.info("回调事件处理")
     end
 
+    # 发送请求
+    def get_page (url,path) # 发送数据
+      # 连接对象
+      conn = Faraday.new(:url => url) do |faraday|
+        faraday.request  :url_encoded             # form-encode POST params
+        faraday.response :logger                  # log requests to STDOUT
+        faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      end
+      response = conn.get path
+      response.body
+    end
 end

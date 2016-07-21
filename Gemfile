@@ -34,3 +34,5 @@ gem 'capistrano-slackify', require: false
 gem 'weixin_rails_middleware'
 
 gem "weixin_authorize"
+# 发送http请求
+gem 'faraday'
