@@ -20,7 +20,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       path = "/request.p?key=#{key}&lc=zh&text=#{text}"
       str = get_page(url,path)
       obj = JSON.parse(str) if str.present?
-      if obj['msg']=='ok'
+      if obj['msg']=='OK.'
         result = obj['response']
       else
         result = 'Zzzzzz.....'
