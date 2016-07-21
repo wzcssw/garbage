@@ -5,14 +5,13 @@
 WeixinRailsMiddleware::WeixinController.class_eval do
 
   def reply
-    Rails.logger.info("### 回复信息 ###")
     render xml: send("response_#{@weixin_message.MsgType}_message", {})
   end
 
   private
 
     def response_text_message(options={})
-      Rails.logger.info("### 用户发来消息:#{@keyword} ###")
+      Rails.logger.info("<<<<<<<<<< 用户发来消息: #{@keyword} >>>>>>>>>")
       #######
       text = @keyword
       url = "http://sandbox.api.simsimi.com"
@@ -26,6 +25,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         result = 'Zzzzzz.....'
       end
       #######
+      Rails.logger.info("<<<<<<<<<<### Simsimi回复: #{result} >>>>>>>>>")
       reply_text_message(result)
     end
 
