@@ -29,3 +29,8 @@ gem 'capistrano-sidekiq'
 gem 'capistrano3-puma'
 
 gem 'capistrano-slackify', require: false
+
+# 微信
+gem 'weixin_rails_middleware'
+
+gem "weixin_authorize"

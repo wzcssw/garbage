@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  
-  root 'welcome#index'
 
-  get 'wechat' => 'wechat#main_msg'
+  mount WeixinRailsMiddleware::Engine, at: "/"
+  root 'welcome#index'
 
 end
