@@ -12,8 +12,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
 
     def response_text_message(options={})
       Rails.logger.info("<<<<<<<<<< 用户发来消息: #{@keyword} >>>>>>>>>")
-      puts '@weixin_message:'
-      puts @weixin_message
+      Rails.logger.info(@weixin_message.inspect)
       #######
       text = @keyword
       url = "http://sandbox.api.simsimi.com"
