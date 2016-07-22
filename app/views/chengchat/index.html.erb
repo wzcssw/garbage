@@ -5,29 +5,42 @@
     <div class="col-md-9">
       <table>
         <% @chengchats.each do |cc| %>
-          <tr>
-            <td>
-              <%= image_tag "user.png",width:40,title: cc.openid<<' '<< cc.created_at.strftime("%m-%d %H:%M"),'data-toggle'=>'tooltip' %>
-            </td>
-            <td>&nbsp;&nbsp;<%= cc.content %></td>
-            <td width=180></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td width=180></td>
-            <td>
-              <%= image_tag "jiji.jpg",width:40,title: cc.created_at.strftime("%m-%d %H:%M"),'data-toggle'=>'tooltip' %>
-            </td>
-            <td>&nbsp;&nbsp;<%= cc.reply %></td>
-          </tr>
+          <% unless cc.reply == '_welcome_event'%>
+            <tr>
+              <td>
+                <%= image_tag "user.png",width:40,title: cc.openid<<' '<< cc.created_at.strftime("%m-%d %H:%M"),'data-toggle'=>'tooltip' %>
+              </td>
+              <td>&nbsp;&nbsp;<%= cc.content %></td>
+              <td width=180></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td width=180></td>
+              <td>
+                <%= image_tag "jiji.jpg",width:40,title: cc.created_at.strftime("%m-%d %H:%M"),'data-toggle'=>'tooltip' %>
+              </td>
+              <td>&nbsp;&nbsp;<%= cc.reply %></td>
+            </tr>
+          <% else %>
+            <% if cc.content == '取消关注'%>
+              <tr>
+                <td colspan="5" style="height:50px;color:grey">--------------------------------------------- 取消关注事件: <%= cc.openid %> --------------------------------------------</td>
+              </tr>
+            <% else %>
+              <tr>
+                <td colspan="5" style="height:50px;color:grey">--------------------------------------------- 新用户关注: <%= cc.openid %> --------------------------------------------</td>
+              </tr>
+            <% end %>
+          <% end %>
         <% end %>
       </table>
     </div>
     <div class="col-md-3">
-      <%= image_tag "code.jpg",width:300,style: "float:right" %>
+      <%= image_tag "code.jpg",width:270,style: "float:right" %>
+      <%= image_tag "name.png",width:220,style: "float:right;margin-right:30px;" %>
     </div>
   </div>
 

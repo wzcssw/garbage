@@ -109,16 +109,27 @@ WeixinRailsMiddleware::WeixinController.class_eval do
         # 扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送
         return reply_text_message("扫描带参数二维码事件: 1. 用户未关注时，进行关注后的事件推送, keyword: #{@keyword}")
       end
-      str_1 = "1. 我们专注于服务质量,只面向高端用户.\n"
-      str_2 = "2. 收集破烂是为了绿色环保,生活环境才是我们永恒的财富.\n"
-      str_3 = "3. 捡破烂是一种生活态度.\n"
-      str_4 = "4. 我们接受任何形式的捐款,投资.\n"
+      str_1 = "1. 收各种类型废品,上门取货.\n"
+      str_2 = "2. 报价远超市场价.\n"
+      str_3 = "3. 有需求请直接回复微信.\n"
+      str_4 = "4. 旧机器设备优先.\n"
 
-      reply_text_message("能关注此公众是你的荣幸，因为:\n\n #{str_1}#{str_2}#{str_3}#{str_4}")
+      option = {}
+      option[:openid] = params['openid']
+      option[:reply] = '_welcome_event'
+      option[:content] = '关注'
+      Chengchat.create(option)
+
+      reply_text_message("欢迎关注我们 ::\n\n #{str_1}#{str_2}#{str_3}#{str_4}")
     end
 
     # 取消关注
     def handle_unsubscribe_event
+      option = {}
+      option[:openid] = params['openid']
+      option[:reply] = '_welcome_event'
+      option[:content] = '取消关注'
+      Chengchat.create(option)
       Rails.logger.info("取消关注")
     end
 
