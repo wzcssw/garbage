@@ -14,7 +14,7 @@
                 <% unless cc.msg_type == 'image'%>
                   &nbsp;&nbsp;<%= cc.content %>
                 <% else %>
-                  <%= image_tag cc.content,width:50 ,alt:'图片' %>
+                  <img src="/<%= cc.content %>" width=50 alt='图片'/>
                 <% end %>
               </td>
               <td width=180></td>

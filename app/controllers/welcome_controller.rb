@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     require 'open-uri'
     download = open url
     file_name = rand(999999).to_s << '.png'
-    IO.copy_stream(download, 'app/assets/images/' << file_name)
+    IO.copy_stream(download, 'app/' << file_name)
     file_name
   end
 end
