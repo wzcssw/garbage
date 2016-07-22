@@ -57,9 +57,11 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
 
+      file_name = save_img @pic_url
+
       option = {}
       option[:openid] = params['openid']
-      option[:content] = @pic_url
+      option[:content] = file_name
       option[:to_user_name] = @weixin_message.ToUserName
       option[:msg_type] = @weixin_message.MsgType
       option[:from_user_name] = @weixin_message.FromUserName
@@ -329,5 +331,14 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       end
       response = conn.get path
       response.body
+    end
+
+    # 保存文件到本地
+    def save_img url
+      require 'open-uri'
+      download = open url
+      file_name = rand(999999).to_s << '.png'
+      IO.copy_stream(download, 'app/assets/images/' << file_name)
+      file_name
     end
 end
