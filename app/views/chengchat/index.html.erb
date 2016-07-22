@@ -14,7 +14,8 @@
                 <% unless cc.msg_type == 'image'%>
                   &nbsp;&nbsp;<%= cc.content %>
                 <% else %>
-                  <img src="/<%= cc.content %>" width=50 alt='图片'/>
+                  &nbsp;&nbsp;
+                  <img src="/<%= cc.content %>" width=70 alt='图片' onclick="show_img('/<%= cc.content %>')"/>
                 <% end %>
               </td>
               <td width=180></td>
@@ -53,8 +54,19 @@
   <%= will_paginate  @chengchats %>
 </div>
 
+<div class="modal fade" id="img_modal">
+  <div class="modal-dialog">
+    <img src="" id="targ_img"/>
+  </div>
+</div>
+
 <script type="text/javascript">
   $().ready(function () {
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  function show_img(url) {
+    $("#targ_img").attr('src',url);
+    $("#img_modal").modal('show');
+  }
 </script>
