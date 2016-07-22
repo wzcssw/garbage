@@ -56,8 +56,18 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       Rails.logger.info("### response_image_message ###")
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
-      Rails.logger.info(@weixin_message.inspect)
-      reply_image_message(generate_image(@media_id))
+
+      option = {}
+      option[:openid] = params['openid']
+      option[:content] = @pic_url
+      option[:to_user_name] = @weixin_message.ToUserName
+      option[:msg_type] = @weixin_message.MsgType
+      option[:from_user_name] = @weixin_message.FromUserName
+      option[:reply] = '这是啥?'
+      Chengchat.create(option)
+
+      reply_text_message('这是啥?')
+      # reply_image_message(generate_image(@media_id))
     end
 
     # <Title><![CDATA[公众平台官网链接]]></Title>

@@ -10,7 +10,13 @@
               <td>
                 <%= image_tag "user.png",width:40,title: cc.openid<<' '<< cc.created_at.strftime("%m-%d %H:%M"),'data-toggle'=>'tooltip' %>
               </td>
-              <td>&nbsp;&nbsp;<%= cc.content %></td>
+              <td>
+                <% unless cc.msg_type == 'image'%>
+                  &nbsp;&nbsp;<%= cc.content %>
+                <% else %>
+                  <img src="<%= cc.content %>" width=50 alt='图片'/>
+                <% end %>
+              </td>
               <td width=180></td>
               <td></td>
               <td></td>
