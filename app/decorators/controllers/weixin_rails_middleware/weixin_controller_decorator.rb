@@ -46,7 +46,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       @ly    = @weixin_message.Location_Y
       @scale = @weixin_message.Scale
       @label = @weixin_message.Label
-      Rails.logger.info("### response_location_message 位置信息 ###")
+      Rails.logger.info("### response_location_message 位置信息 #{@scale}, #{@label} ###")
       reply_text_message("Your Location: #{@lx}, #{@ly}, #{@scale}, #{@label}")
     end
 
@@ -56,6 +56,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       Rails.logger.info("### response_image_message ###")
       @media_id = @weixin_message.MediaId # 可以调用多媒体文件下载接口拉取数据。
       @pic_url  = @weixin_message.PicUrl  # 也可以直接通过此链接下载图片, 建议使用carrierwave.
+      Rails.logger.info(@weixin_message.inspect)
       reply_image_message(generate_image(@media_id))
     end
 
