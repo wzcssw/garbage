@@ -2,12 +2,12 @@
 <br/>
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-9">
       <table>
         <% @chengchats.each do |cc| %>
           <tr>
             <td>
-              <img src="/assets/user.png" width=40 data-toggle="tooltip" title="<%= cc.openid %> <%= cc.created_at.strftime("%m-%d %H:%M") %>"/>
+              <%= image_tag "user.png",width:40,title: cc.openid<<' '<< cc.created_at.strftime("%m-%d %H:%M"),'data-toggle'=>'tooltip' %>
             </td>
             <td>&nbsp;&nbsp;<%= cc.content %></td>
             <td width=180></td>
@@ -19,14 +19,14 @@
             <td></td>
             <td width=180></td>
             <td>
-              <img src="/assets/jiji.jpg" width=40 data-toggle="tooltip" title="<%= cc.created_at.strftime("%m-%d %H:%M") %>"/>
+              <%= image_tag "jiji.jpg",width:40,title: cc.created_at.strftime("%m-%d %H:%M"),'data-toggle'=>'tooltip' %>
             </td>
             <td>&nbsp;&nbsp;<%= cc.reply %></td>
           </tr>
         <% end %>
       </table>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-3">
       <img src="/assets/code.jpg" width=300  style="float:right"/>
     </div>
   </div>
