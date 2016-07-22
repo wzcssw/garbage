@@ -36,3 +36,9 @@ gem 'weixin_rails_middleware'
 gem "weixin_authorize"
 # 发送http请求
 gem 'faraday'
+
+gem 'jquery-rails'
+# 分页
+gem 'will_paginate'
+
+gem 'bootstrap-will_paginate'
