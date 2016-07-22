@@ -338,7 +338,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       require 'open-uri'
       download = open url
       file_name = rand(999999).to_s << '.png'
-      IO.copy_stream(download, 'app/' << file_name)
+      IO.copy_stream(download, 'public/' << file_name)
       file_name
     end
 end
