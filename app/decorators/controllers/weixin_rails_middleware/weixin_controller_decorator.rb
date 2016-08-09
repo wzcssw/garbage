@@ -14,16 +14,19 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       Rails.logger.info("<<<<<<<<<< 用户发来消息: #{@keyword} >>>>>>>>>")
       #######
       text = URI::encode(@keyword)
+      Rails.logger.info("<<<<<<<<< URI::encode: #{text}")
       url = "http://www.xiaodoubi.com"
       path = "/simsimiapi.php?msg=#{text}"
+      Rails.logger.info("<<<<<<<<< path: #{path}")
       str = get_page(url,path)
+      Rails.logger.info("<<<<<<<<< str: #{str}")
       result = ""
       if str.present?
         result = str
       else
         result = 'Zzzzzz.....'
       end
-
+      Rails.logger.info("<<<<<<<<< result: #{result}")
       option = {}
       option[:openid] = params['openid']
       option[:content] = @weixin_message.Content
