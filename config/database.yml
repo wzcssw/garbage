@@ -12,7 +12,10 @@ development:
 
 test:
   <<: *default
-  database: garbage_test
+  host: 42.96.207.102
+  database: garbage_production
+  username: root
+  password: wzc19931030
 
 production:
   <<: *default
