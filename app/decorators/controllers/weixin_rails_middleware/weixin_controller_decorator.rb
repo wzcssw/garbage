@@ -29,11 +29,12 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       Rails.logger.info("<<<<<<<<< result: #{result}")
       option = {}
       option[:openid] = params['openid']
-      option[:content] = @weixin_message.Content
+      # option[:content] = @weixin_message.Content
+      option[:content] = @keyword
       option[:to_user_name] = @weixin_message.ToUserName
       option[:msg_type] = @weixin_message.MsgType
       option[:from_user_name] = @weixin_message.FromUserName
-      option[:reply] = @keyword
+      option[:reply] = result
       Chengchat.create(option)
       #######
       Rails.logger.info("<<<<<<<<<<### Simsimi回复: #{result} >>>>>>>>>")
