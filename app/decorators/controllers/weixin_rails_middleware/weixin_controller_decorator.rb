@@ -37,7 +37,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       option[:reply] = result
       Chengchat.create(option)
       #######
-      Rails.logger.info("<<<<<<<<<<### Simsimi回复: #{result} >>>>>>>>>")
+      # Rails.logger.info("<<<<<<<<<<### Simsimi回复: #{result} >>>>>>>>>")
       reply_text_message(result)
     end
 
