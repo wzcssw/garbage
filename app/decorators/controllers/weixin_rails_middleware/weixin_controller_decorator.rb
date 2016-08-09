@@ -28,13 +28,13 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       end
       Rails.logger.info("<<<<<<<<< result: #{result}")
       option = {}
-      option[:openid] = params['openid']
+      option[:openid] = params['openid'].force_encoding 'utf-8'
       # option[:content] = @weixin_message.Content
-      option[:content] = @keyword
-      option[:to_user_name] = @weixin_message.ToUserName
-      option[:msg_type] = @weixin_message.MsgType
-      option[:from_user_name] = @weixin_message.FromUserName
-      option[:reply] = result
+      option[:content] = @keyword.force_encoding 'utf-8'
+      option[:to_user_name] = @weixin_message.ToUserName.force_encoding 'utf-8'
+      option[:msg_type] = @weixin_message.MsgType.force_encoding 'utf-8'
+      option[:from_user_name] = @weixin_message.FromUserName.force_encoding 'utf-8'
+      option[:reply] = result.force_encoding 'utf-8'
       Chengchat.create(option)
       #######
       # Rails.logger.info("<<<<<<<<<<### Simsimi回复: #{result} >>>>>>>>>")
