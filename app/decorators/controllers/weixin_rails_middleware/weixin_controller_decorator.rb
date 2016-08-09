@@ -33,7 +33,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       option[:to_user_name] = @weixin_message.ToUserName
       option[:msg_type] = @weixin_message.MsgType
       option[:from_user_name] = @weixin_message.FromUserName
-      option[:reply] = result
+      option[:reply] = @keyword
       Chengchat.create(option)
       #######
       Rails.logger.info("<<<<<<<<<<### Simsimi回复: #{result} >>>>>>>>>")
