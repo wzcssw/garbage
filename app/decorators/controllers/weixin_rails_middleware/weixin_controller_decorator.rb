@@ -13,7 +13,7 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     def response_text_message(options={})
       Rails.logger.info("<<<<<<<<<< 用户发来消息: #{@keyword} >>>>>>>>>")
       #######
-      text = @keyword
+      text = URI::encode(@keyword)
       url = "http://www.xiaodoubi.com"
       path = "/simsimiapi.php?msg=#{text}"
       str = get_page(url,path)
