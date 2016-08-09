@@ -17,12 +17,13 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       url = "http://www.xiaodoubi.com"
       path = "/simsimiapi.php?msg=#{text}"
       str = get_page(url,path)
+      result = ""
       if str.present?
         result = str
       else
         result = 'Zzzzzz.....'
       end
-      
+
       option = {}
       option[:openid] = params['openid']
       option[:content] = @weixin_message.Content
